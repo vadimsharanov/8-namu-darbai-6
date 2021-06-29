@@ -1,8 +1,38 @@
+// Javascript "Klasės"
+// 1. Susikurti klasę "Namas". 
+// Klasės kintamieji:
+// miestas - tekstas,
+// pastatymo data - datos formatas, 
+// adresas - tekstas,
+// laiptinių skaičius - masyvas, turintis tiek elementų, kiek yra laiptinių. Pvz: [1,2,3,4]
+// butų skaičius - masyvas, turintis tiek elementų, kiek butų yra laiptinėje.Pvz: [20, 22, 19, 13]
+// bendras butų skaičius - suskaičiuojamas automatiškai. Apskaičiavimui susikurti statinį metodą.
+
 "use strict"
-let miestas = "hueta"
 let pastatymoData = []
-let laiptiniuSkaicius = []
+let laiptines = []
+
+
+
+// Random skaiciu funkcija\\
+function randomFunctionWithMax (min, max) {
+    return Math.floor((Math.random() *  (max - min+1)) + min)  // minimali reiksme ieina, maksimali ne
+}
+
+// Laiptiniu generavimas
+for (let i=1; i <= randomFunctionWithMax(1,5); i ++) {
+    laiptines.push(i)
+}
+let laiptiniuSkaicius = laiptines.length;
+// Butu generavimas\\
 let butuSkaicius = []
+for (let i = 1; i < randomFunctionWithMax(10, 30); i++) {
+    butuSkaicius.push(randomFunctionWithMax(1,100))
+}
+
+console.log(butuSkaicius);
+
+
 class Namas {
     constructor (miestas,pastatymoData, adresas, laiptiniuSkaicius, butuSkaicius, butuSuma) {
         this.miestas = miestas;
@@ -17,28 +47,11 @@ class Namas {
         return skaiciavimas.getFullYear() - pastatymoData
     }
     static butuSumosSkaiciavimas (a,b) {
-        let suma = 
+        let suma = butuSkaicius.length * laiptiniuSkaicius;
         return suma;
     }
  
 }
-
-let gavno = new Namas("Dukstas", (Namas.gimimoData(13)), "Duksto g. 1", laiptiniuSkaicius, butuSkaicius, (Namas.butuSumosSkaiciavimas(1,2)))
-console.log(gavno);
-// Javascript "Klasės"
-
- 
-
-// 1. Susikurti klasę "Namas". 
-// Klasės kintamieji:
-// miestas - tekstas,
-// pastatymo data - datos formatas, 
-// adresas - tekstas,
-// laiptinių skaičius - masyvas, turintis tiek elementų, kiek yra laiptinių. Pvz: [1,2,3,4]
-// butų skaičius - masyvas, turintis tiek elementų, kiek butų yra laiptinėje.Pvz: [20, 22, 19, 13]
-// bendras butų skaičius - suskaičiuojamas automatiškai. Apskaičiavimui susikurti statinį metodą.
-
- 
 
 // 2. Susikurti klasę "Butas".
 // Klasės kintamieji:
@@ -53,6 +66,25 @@ console.log(gavno);
 
  
 
+class Butas extends Namas {
+    constructor(butoNumeris,kambariuSkaicius, gyventojuSkaicius, miestas,pastatymoData, adresas, laiptiniuSkaicius, butuSkaicius, butuSuma) {
+        super(miestas,pastatymoData, adresas, laiptiniuSkaicius, butuSkaicius, butuSuma)
+        this.butoNumeris = butoNumeris;
+        this.kambariuSkaicius = kambariuSkaicius;
+        this.gyventojuSkaicius = gyventojuSkaicius;
+
+    }
+    informacija () {
+        return `Bute nr. ${this.butoNumeris}, yra ${this.kambariuSkaicius} kambariai, kuriuose is viso gyvena ${this.gyventojuSkaicius} gyventojai.`
+    }
+}
+
+
+let gavno = new Namas("Dukstas", (Namas.gimimoData(50)), "Duksto g. 1", laiptiniuSkaicius, butuSkaicius, (Namas.butuSumosSkaiciavimas(1,2)))
+let gavno1 = new Butas(1,2,3);
+console.log(gavno1.informacija());
+
+
 // 3. Susikurti "Namas" objektų masyvą.
 // Masyva sudaro 5 objektai sukurti pagal klasę. 
 // Duomenis užpildyti savo nuožiūrą.
@@ -60,6 +92,21 @@ console.log(gavno);
  
 
 // 4. Masyvą išvesti į console.log.
+let namoMasyvas = []
+namoMasyvas.push(new Namas("Dukstas",Namas.gimimoData(20), "Duksto g. 1", laiptiniuSkaicius, butuSkaicius, Namas.butuSumosSkaiciavimas(1,2)))
+namoMasyvas.push(new Namas("Dukstas",Namas.gimimoData(20), "Duksto g. 1", laiptiniuSkaicius, butuSkaicius, Namas.butuSumosSkaiciavimas(1,2)))
+namoMasyvas.push(new Namas("Dukstas",Namas.gimimoData(20), "Duksto g. 1", laiptiniuSkaicius, butuSkaicius, Namas.butuSumosSkaiciavimas(1,2)))
+namoMasyvas.push(new Namas("Dukstas",Namas.gimimoData(20), "Duksto g. 1", laiptiniuSkaicius, butuSkaicius, Namas.butuSumosSkaiciavimas(1,2)))
+namoMasyvas.push(new Namas("Dukstas",Namas.gimimoData(20), "Duksto g. 1", laiptiniuSkaicius, butuSkaicius, Namas.butuSumosSkaiciavimas(1,2)))
+console.log(namoMasyvas);
+
+
+
+
+ 
+
+
+
 
  
 
@@ -74,3 +121,4 @@ console.log(gavno);
  
 
 // Kiekvieno kvadratėlio viduje atvaizduojamas buto numeris.
+
