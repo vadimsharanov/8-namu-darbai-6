@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style> 
+body,
+body * {
+    margin: 0;
+    padding-left: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    text-align:  center;
+
+}
+.laiptine1, .laiptine2, .laiptine3, .laiptine4, .laiptine5 {
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+
+}
+.hueta {
+
+    width: 40px;
+    height: 40px;
+    border: 3px solid black;
+    text-align:  center;
+
+}
+
+
+
+</style>
+<body>
+    <main>
+        <div class="container">
+            <div class="laiptine1"></div>
+            <div class="laiptine2"></div>
+            <div class="laiptine3"></div>
+            <div class="laiptine4"></div>
+            <div class="laiptine5"></div>
+        </div>
+    </main>
+    <script src="/stulpeliai/script.js"></script>
+</body>
+</html>
